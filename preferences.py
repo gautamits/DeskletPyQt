@@ -62,12 +62,14 @@ class tab(QtGui.QWidget):
 		self.delete=QtGui.QPushButton("Delete")
 		self.save=QtGui.QPushButton("Save")
 		
+		self.delete.setEnabled(False)
 
 		self.add.clicked.connect(self.addFunction)
 		self.delete.clicked.connect(self.deleteFunction)
 		self.save.clicked.connect(self.saveFunction)
 
-		self.mylist.itemClicked.connect(self.mylist.Clicked)
+		#self.mylist.itemClicked.connect(self.mylist.Clicked)
+		self.mylist.itemClicked.connect(self.Clicked)
 
 		secondaryLayout.addWidget(self.add)
 		secondaryLayout.addWidget(self.delete)
@@ -85,6 +87,7 @@ class tab(QtGui.QWidget):
 			print "deleting ",obj
 			item = self.mylist.takeItem(self.mylist.currentRow())
 			item = None
+			self.delete.setEnabled(False)
 		else:
 			print "none selected"
 	def saveFunction(self):
@@ -93,6 +96,8 @@ class tab(QtGui.QWidget):
 		np.save(self.name+".npy",np.array(self.mylist.allItems(self.mylist)))
 	def name(self,string):
 		self.name=string
+	def Clicked(self):
+		self.delete.setEnabled(True)
 
 app=QtGui.QApplication(sys.argv)
 GUI= tabdemo()
