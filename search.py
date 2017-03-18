@@ -88,15 +88,6 @@ class ZoomWidget(QtGui.QWidget):
             self.removeButtons()
             self.button_maps.clear()
             text=self.entry.text()
-            """
-            text='"'+text+'"'
-            command='locate -i '+str(text)+' | grep -e "/mnt" -e "/media" -e "/home" | grep -v "/\." | grep -v "android" | grep -v "Android" | grep -v "workspace"'
-            print 'Editing Finished'
-            result=commands.getstatusoutput(command)
-        
-            a,result=result
-            result=result.split('\n')
-            """
             database = np.load("database.npy").tolist()
             result=[s for s in database if str(text).lower() in os.path.split(s)[1].lower()]
             result=result[:15]
