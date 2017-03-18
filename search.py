@@ -76,7 +76,7 @@ class ZoomWidget(QtGui.QWidget):
         #print ("so custom")
         
         ############ popup code #############
-        choice = QtGui.QMessageBox.question(self,'extract', "Get into the chopper?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        choice = QtGui.QMessageBox.question(self,'extract', "exit now?",QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
         if choice == QtGui.QMessageBox.Yes:
             print "exiting now"
             sys.exit()
@@ -122,7 +122,7 @@ class ZoomWidget(QtGui.QWidget):
     def create_connect(self,x):
         return lambda: call(["xdg-open",x])
     def close_application(self):
-        print ("so custom")
+        print ("search application closed")
         sys.exit()
     def removeButtons(self):
         for cnt in reversed(range(self.secondaryLayout.count())):
